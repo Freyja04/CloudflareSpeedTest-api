@@ -127,7 +127,7 @@ func (p *Ping) appendIPData(data *utils.PingData) {
 
 // handle tcping
 func (p *Ping) tcpingHandler(ip *net.IPAddr) {
-	recv, totalDlay := p.checkConnection(ip)
+	recv, totalDelay := p.checkConnection(ip)
 	nowAble := len(p.csv)
 	if recv != 0 {
 		nowAble++
@@ -140,7 +140,8 @@ func (p *Ping) tcpingHandler(ip *net.IPAddr) {
 		IP:       ip,
 		Sended:   PingTimes,
 		Received: recv,
-		Delay:    totalDlay / time.Duration(recv),
+		Delay:    totalDelay / time.Duration(recv),  // Fix the variable name here
 	}
 	p.appendIPData(data)
 }
+
