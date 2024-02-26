@@ -24,7 +24,7 @@ jobs:
         with:
           name: cloudflare-speedtest-api
           path: cloudflare-speedtest-api.exe
-          
+
   release:
     needs: build
     runs-on: windows-latest
@@ -41,8 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.ref_replace('refs/','') }}
+          release_name: Release ${{ github.ref_replace('refs/','') }}
           body: |
             编译打包测试111
 
