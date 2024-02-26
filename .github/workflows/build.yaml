@@ -45,7 +45,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
-            Release notes and description...
+            编译打包测试
 
       - name: Upload Release Asset
         id: upload-release-asset
