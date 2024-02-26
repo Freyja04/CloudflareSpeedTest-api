@@ -41,8 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_replace('refs/','') }}
-          release_name: Release ${{ github.ref_replace('refs/','') }}
+          tag_name: test1
+          release_name: cf test
           body: |
             编译打包测试111
 
