@@ -7,8 +7,7 @@ import (
 	"strconv"
 	"sync"
 	"time"
-
-	"github.com/sleeple2s/CloudflareSpeedTest-api/utils"
+	"edulx/CloudflareSpeedTest-api/utils"
 )
 
 const (
