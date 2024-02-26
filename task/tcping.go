@@ -1,13 +1,13 @@
 package task
 
 import (
+	"edulx/CloudflareSpeedTest-api/utils"
 	"fmt"
 	"net"
 	"sort"
 	"strconv"
 	"sync"
 	"time"
-	"edulx/CloudflareSpeedTest-api/utils"
 )
 
 const (
