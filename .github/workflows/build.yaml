@@ -1,25 +1,61 @@
-name: Build Go Project
+name: Build and Release
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2${{ secrets.GITHUB_TOKEN }}
+
       - name: Setup Go
         uses: actions/setup-go@v2
         with:
           go-version: '1.17'
+
       - name: Build project
         run: go build -o cloudflare-speedtest-api.exe
+
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: cloudflare-speedtest-api
           path: cloudflare-speedtest-api.exe
+
+  release:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: cloudflare-speedtest-api
+          path: .
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Release notes and description...
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cloudflare-speedtest-api.exe
+          asset_name: cloudflare-speedtest-api.exe
+          asset_content_type: application/octet-stream
 
 
