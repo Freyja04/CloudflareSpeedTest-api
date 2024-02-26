@@ -1,0 +1,24 @@
+name: Build Go Project
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+      - name: Build project
+        run: go build -o cloudflare-speedtest-api
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: cloudflare-speedtest-api
+          path: cloudflare-speedtest-api
+
