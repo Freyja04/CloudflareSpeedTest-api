@@ -38,7 +38,7 @@ https://github.com/XIU2/CloudflareSpeedTest
         下载测速时间；单个 IP 下载测速最长时间，不能太短；(默认 10 秒)
     -tp 443
         指定测速端口；延迟测速/下载测速时使用的端口；(默认 443 端口)
-    -url https://cf.xiu2.xyz/url
+    -url https://testfileorg.netwet.net/500MB-CZIPtestfile.org.zip
         指定测速地址；延迟测速(HTTPing)/下载测速时使用的地址，默认地址不保证可用性，建议自建；
 
     -httping
@@ -89,7 +89,7 @@ https://github.com/XIU2/CloudflareSpeedTest
 	flag.IntVar(&maxDelay, "tl", 300, "平均延迟上限")
 	flag.IntVar(&minDelay, "tll", 10, "平均延迟下限")
 	flag.Float64Var(&task.MinSpeed, "sl", 1, "下载速度下限")
-	flag.IntVar(&utils.PrintNum, "p", 10, "显示结果数量")
+	flag.IntVar(&utils.PrintNum, "p", 5, "显示结果数量")
 	flag.StringVar(&task.IPFile, "f", "ip.txt", "IP段数据文件")
 	flag.StringVar(&task.IPText, "ip", "", "指定IP段数据")
 	flag.StringVar(&utils.Output, "o", "result.csv", "输出结果文件")
@@ -184,12 +184,13 @@ func Run() {
 	task.InitRandSeed() // 置随机数种子
 	
 	fmt.Printf("# XIU2/CloudflareSpeedTest %s \n\n", version)
-	fmt.Println("来自v50-one的修改版，感谢原作者")
+
 	// 开始延迟测速
 	pingData := task.NewPing().Run().FilterDelay()
 	// 开始下载测速
 	speedData := task.TestDownloadSpeed(pingData)
 	utils.ExportCsv(speedData) // 输出文件
+	utils.ExportSta(speedData) // 输出统计文件
 	speedData.Print()          // 打印结果
 	
 	if versionNew != "" {

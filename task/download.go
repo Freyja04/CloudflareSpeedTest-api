@@ -15,7 +15,7 @@ import (
 
 const (
 	bufferSize                     = 1024
-	defaultURL                     = "https://cf.xiu2.xyz/url"
+	defaultURL                     = "https://testfileorg.netwet.net/500MB-CZIPtestfile.org.zip"
 	defaultTimeout                 = 10 * time.Second
 	defaultDisableDownload         = false
 	defaultTestNum                 = 10

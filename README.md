@@ -1,17 +1,8 @@
-# v50-one/CloudflareSpeedTest-api
-## Sponsor
-We are proudly sponsored by DartNode.  DartNode supports our project by providing [mention the specific support they offer, such as infrastructure, services, etc.].
-websize:https://dartnode.com
+* 本项目是基于XIU2/CloudflareSpeedTest 改版而来
+* 本改版只是在测速的基础上添加了将优选出来的IP通过调用Cloudflare的api来实现将域名解析到对应的优选ip
+* config.yaml 为调用api的配置文件  
 
-[![DartNode Logo](https://app.dartnode.com/assets/dash/images/brand/favicon.png)](https://dartnode.com)
-
-Please consider supporting DartNode as they are not only supporting us but also contributing to the open-source community. 
-
-## 本项目是基于XIU2/CloudflareSpeedTest 改版而来
-## 本改版只是在测速的基础上添加了将优选出来的IP通过调用Cloudflare的api来实现将域名解析到对应的优选ip
-# config.yaml 为调用api的配置文件
 # 以下为原版教程
-
 
 # XIU2/CloudflareSpeedTest
 [![Go Version](https://img.shields.io/github/go-mod/go-version/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Go&color=00ADD8&logo=go)](https://github.com/XIU2/CloudflareSpeedTest/)
@@ -20,13 +11,6 @@ Please consider supporting DartNode as they are not only supporting us but also 
 [![GitHub Star](https://img.shields.io/github/stars/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Star&color=00ADD8&logo=github)](https://github.com/XIU2/CloudflareSpeedTest/)
 [![GitHub Fork](https://img.shields.io/github/forks/XIU2/CloudflareSpeedTest.svg?style=flat-square&label=Fork&color=00ADD8&logo=github)](https://github.com/XIU2/CloudflareSpeedTest/)
 
-国外很多网站都在使用 Cloudflare CDN，但分配给中国内地访客的 IP 并不友好（延迟高、丢包多、速度慢）。  
-虽然 Cloudflare 公开了所有 [IP 段](https://www.cloudflare.com/ips/) ，但想要在这么多 IP 中找到适合自己的，怕是要累死，于是就有了这个软件。
-
-**「自选优选 IP」测试 Cloudflare CDN 延迟和速度，获取最快 IP (IPv4+IPv6)**！好用的话**点个`⭐`鼓励一下叭~**
-
-> _分享我其他开源项目：[**TrackersList.com** - 全网热门 BT Tracker 列表！有效提高 BT 下载速度~](https://github.com/XIU2/TrackersListCollection) <img src="https://img.shields.io/github/stars/XIU2/TrackersListCollection.svg?style=flat-square&label=Star&color=4285dd&logo=github" height="16px" />_  
-> _[**UserScript** - 🐵 Github 高速下载、知乎增强、自动无缝翻页、护眼模式 等十几个**油猴脚本**！](https://github.com/XIU2/UserScript)<img src="https://img.shields.io/github/stars/XIU2/UserScript.svg?style=flat-square&label=Star&color=4285dd&logo=github" height="16px" />_
 
 > 本项目也支持对**其他 CDN / 网站 IP** 延迟测速（如：[CloudFront](https://github.com/XIU2/CloudflareSpeedTest/discussions/304)、[Gcore](https://github.com/XIU2/CloudflareSpeedTest/discussions/303) CDN），但下载测速需自行寻找地址
 
@@ -34,7 +18,6 @@ Please consider supporting DartNode as they are not only supporting us but also 
 
 ****
 ## \# 快速使用
-
 ### 下载运行
 
 1. 下载编译好的可执行文件
