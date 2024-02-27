@@ -44,10 +44,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "V2.0"
+          tag_name: "V3.0"
           release_name: "CloudflareSpeedTest-api"
           body: |
-            v2.0
+            v3.0
             config.yaml和ip.txt
             这两个文件必须下载下来和 CloudflareSpeedTest-api.exe放到同一路径下
 
@@ -59,9 +59,9 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: |
-            cloudflare-speedtest-api.exe
-            ip.txt
-            config.yaml
+            ./cloudflare-speedtest-api.exe
+            ./ip.txt
+            ./config.yaml
           asset_name: |
             cloudflare-speedtest-api.exe
             ip.txt
