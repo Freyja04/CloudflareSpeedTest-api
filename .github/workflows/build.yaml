@@ -44,32 +44,46 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "V3.0"
+          tag_name: "V4.0"
           release_name: "CloudflareSpeedTest-api"
           body: |
-            v3.0
+            v4.0
             config.yaml和ip.txt
             这两个文件必须下载下来和 CloudflareSpeedTest-api.exe放到同一路径下
 
-      - name: Upload Release Asset
-        id: upload-release-asset
+      - name: Upload cloudflare-speedtest-api.exe
+        id: upload-release-asset-exe
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: |
-            ./cloudflare-speedtest-api.exe
-            ./ip.txt
-            ./config.yaml
-          asset_name: |
-            cloudflare-speedtest-api.exe
-            ip.txt
-            config.yaml
-          asset_content_type: |
-            application/octet-stream
-            text/plain
-            text/plain
+          asset_path: ./.github/workflows/cloudflare-speedtest-api.exe
+          asset_name: cloudflare-speedtest-api.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload ip.txt
+        id: upload-release-asset-ip
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ip.txt
+          asset_name: ip.txt
+          asset_content_type: text/plain
+
+      - name: Upload config.yaml
+        id: upload-release-asset-config
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./config.yaml
+          asset_name: config.yaml
+          asset_content_type: text/plain
+
 
 
 
