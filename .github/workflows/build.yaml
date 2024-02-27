@@ -23,7 +23,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: cloudflare-speedtest-api
-          path: cloudflare-speedtest-api.exe
+          path: |
+            cloudflare-speedtest-api.exe
+            ip.txt
+            config.yaml
 
   release:
     needs: build
@@ -44,7 +47,9 @@ jobs:
           tag_name: "V1.0.0"
           release_name: "CloudflareSpeedTest-api"
           body: |
-            V1.0.0 TEST
+            v1.0.0
+            config.yaml和ip.txt
+            这两个文件必须下载下来和 CloudflareSpeedTest-api.exe放到同一路径下
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -53,8 +58,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./cloudflare-speedtest-api.exe
-          asset_name: cloudflare-speedtest-api.exe
-          asset_content_type: application/octet-stream
+          asset_path: ./*
+
 
 

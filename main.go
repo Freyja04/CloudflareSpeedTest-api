@@ -77,10 +77,10 @@ https://github.com/XIU2/CloudflareSpeedTest
 	var minDelay, maxDelay, downloadTime int
 	flag.IntVar(&task.Routines, "n", 200, "延迟测速线程")
 	flag.IntVar(&task.PingTimes, "t", 4, "延迟测速次数")
-	flag.IntVar(&task.TestCount, "dn", 10, "下载测速数量")
+	flag.IntVar(&task.TestCount, "dn", 5, "下载测速数量")
 	flag.IntVar(&downloadTime, "dt", 10, "下载测速时间")
 	flag.IntVar(&task.TCPPort, "tp", 443, "指定测速端口")
-	flag.StringVar(&task.URL, "url", "https://speedtest.sleeple2s.eu.org", "指定测速地址")
+	flag.StringVar(&task.URL, "url", "https://testfileorg.netwet.net/500MB-CZIPtestfile.org.zip", "指定测速地址")
 	
 	flag.BoolVar(&task.Httping, "httping", false, "切换测速模式")
 	flag.IntVar(&task.HttpingStatusCode, "httping-code", 0, "有效状态代码")
