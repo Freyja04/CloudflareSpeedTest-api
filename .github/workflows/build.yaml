@@ -44,10 +44,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "V6.0"
+          tag_name: "V1.0"
           release_name: "CloudflareSpeedTest-api"
           body: |
-            v6.0
             config.yaml和ip.txt
             这两个文件必须下载下来和 CloudflareSpeedTest-api.exe放到同一路径下
 
