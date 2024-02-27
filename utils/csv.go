@@ -85,26 +85,24 @@ func ExportCsv(data []CloudflareIPData) {
 }
 
 func ExportSta(data []CloudflareIPData) {
-	if noOutput() || len(data) == 0 {
-		return
-	}
+    if noOutput() || len(data) == 0 {
+        return
+    }
 
-	// 使用os.OpenFile以追加模式打开文件，如果文件不存在则创建
-	fp, err := os.OpenFile(staOutput, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
-	if err != nil {
-		log.Fatalf("创建文件[%s]失败：%v", Output, err)
-		return
-	}
-	defer fp.Close()
+    // 使用os.OpenFile以追加模式打开文件，如果文件不存在则创建
+    fp, err := os.OpenFile(staOutput, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+    if err != nil {
+        log.Fatalf("创建文件[%s]失败：%v", Output, err)
+        return
+    }
+    defer fp.Close()
 
-	w := csv.NewWriter(fp) // 创建一个新的写入文件流
-	// 如果文件是新创建的，则写入表头
-	if stat, err := fp.Stat(); err == nil && stat.Size() == 0 {
-		_ = w.Write([]string{"IP 地址", "已发送", "已接收", "丢包率", "平均延迟", "下载速度 (MB/s)"})
-		_ = w.WriteAll(convertToString(data))
-	}
-	w.Flush()
+    w := csv.NewWriter(fp) // 创建一个新的写入文件流
+    _ = w.Write([]string{"IP 地址", "已发送", "已接收", "丢包率", "平均延迟", "下载速度 (MB/s)"})
+    _ = w.WriteAll(convertToString(data))
+    w.Flush()
 }
+
 
 func convertToString(data []CloudflareIPData) [][]string {
 	result := make([][]string, 0)
