@@ -75,18 +75,18 @@ https://github.com/XIU2/CloudflareSpeedTest
         打印帮助说明
 `
 	var minDelay, maxDelay, downloadTime int
-	flag.IntVar(&task.Routines, "n", 200, "延迟测速线程")
-	flag.IntVar(&task.PingTimes, "t", 4, "延迟测速次数")
+	flag.IntVar(&task.Routines, "n", 100, "延迟测速线程")
+	flag.IntVar(&task.PingTimes, "t", 3, "延迟测速次数")
 	flag.IntVar(&task.TestCount, "dn", 5, "下载测速数量")
 	flag.IntVar(&downloadTime, "dt", 10, "下载测速时间")
 	flag.IntVar(&task.TCPPort, "tp", 443, "指定测速端口")
 	flag.StringVar(&task.URL, "url", "https://testfileorg.netwet.net/500MB-CZIPtestfile.org.zip", "指定测速地址")
 	
-	flag.BoolVar(&task.Httping, "httping", false, "切换测速模式")
+	flag.BoolVar(&task.Httping, "httping", true, "切换测速模式")
 	flag.IntVar(&task.HttpingStatusCode, "httping-code", 0, "有效状态代码")
 	flag.StringVar(&task.HttpingCFColo, "cfcolo", "", "匹配指定地区")
 	
-	flag.IntVar(&maxDelay, "tl", 300, "平均延迟上限")
+	flag.IntVar(&maxDelay, "tl", 400, "平均延迟上限")
 	flag.IntVar(&minDelay, "tll", 10, "平均延迟下限")
 	flag.Float64Var(&task.MinSpeed, "sl", 1, "下载速度下限")
 	flag.IntVar(&utils.PrintNum, "p", 5, "显示结果数量")
