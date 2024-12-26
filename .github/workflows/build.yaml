@@ -33,7 +33,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: cloudflare-speedtest-api
           path: .
@@ -44,7 +44,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "V1.0"
+          tag_name: "V1.1"
           release_name: "CloudflareSpeedTest-api"
           body: |
             config.yaml和ip.txt
